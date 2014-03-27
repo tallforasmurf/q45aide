@@ -1,8 +1,7 @@
-q45aide.py
-==========
+q45aide
+=======
 
-A program to assist the conversion of a PyQt4/Python2 program to one that works
-in PyQt5 on Python 3.
+A program to help upgrading PyQt4 with Python-2 to PyQt5 under Python-3.
 
     python3 q45aide.py [-i | --imports] [-v | --vertical] [-o output] input
 
