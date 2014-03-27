@@ -178,6 +178,17 @@ def fix_timer(line):
         'QTimer default resolution is now CoarseTimer. Set timer type to'
         'Qt.PreciseTimer for old default behavior.'
         ]
+def fix_super(line):
+    '''
+    line contains super(; if it contains super(anything),
+    advise use of simpler super().
+    '''
+    if regex.search('super\\(\s*[^)]', line) :
+        return [
+            'In Python 3 use the simpler form of super().__init__'
+            ]
+    return []
+
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 # Global dicts:
 #  qname_dict relates QXxxx names to fixup functions.
@@ -215,7 +226,8 @@ fixup_dict = { 'SIGNAL' : fix_connect,
                 '.fromAscii' : fix_ascii,
                 'UnicodeUTF8' : fix_uutf8,
                 '__future' : fix_future,
-                'unicode(' : fix_unicode
+                'unicode(' : fix_unicode,
+                'super(' : fix_super
                 }
 module_dict = { }
 import_dict = { }
