@@ -8,7 +8,7 @@ immediately (or at least soon) after creating the app.
 '''
 __all__ = ['tellall']
 
-def tellall() :
+def tellall( The_QApplication = None ) :
 
     def fink(title=str, value=None) :
         if value : # is not None
@@ -40,12 +40,13 @@ def tellall() :
     fink( 'Qt Translations', QLibraryInfo.location( QLibraryInfo.TranslationsPath ) )
 
     # QApplication.libraryPaths() returns a list of strings
-    library_paths = QApplication.libraryPaths()
-    for one_path in library_paths :
-        fink( 'QApplication library path', one_path )
+    if The_QApplication :
+        library_paths = The_QApplication.libraryPaths()
+        for one_path in library_paths :
+            fink( 'QApplication library path', one_path )
 
 if __name__ == '__main__' :
     # Start the application so LibraryInfo will work
     from PyQt5.QtWidgets import QApplication
     TheApp = QApplication( [] )
-    tellall()
+    tellall( TheApp )
