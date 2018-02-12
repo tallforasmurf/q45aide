@@ -27,18 +27,25 @@ def tellall() :
         fink( '(not frozen)' )
 
     import os
-    fink( 'QTWEBENGINEPROCESS_PATH', os.environ['QTWEBENGINEPROCESS_PATH'] )
+    fink( 'QTWEBENGINEPROCESS_PATH', os.environ.get('QTWEBENGINEPROCESS_PATH',None) )
 
 
     from PyQt5.QtCore import QLibraryInfo
 
     fink( 'Qt Prefix Path', QLibraryInfo.location( QLibraryInfo.PrefixPath ) )
     fink( 'Qt LibraryExecutables', QLibraryInfo.location( QLibraryInfo.LibraryExecutablesPath ) )
-    fink( 'Qt Plugins', QLibraryInfo.location( QLibraryInfo.PluginsPath ) )
+    fink( 'Qt Plugins Path', QLibraryInfo.location( QLibraryInfo.PluginsPath ) )
+    fink( 'QML 2 Imports Path', QLibraryInfo.location( QLibraryInfo.Qml2ImportsPath ) )
     fink( 'Qt Data (resources) path', QLibraryInfo.location( QLibraryInfo.DataPath ) )
     fink( 'Qt Translations', QLibraryInfo.location( QLibraryInfo.TranslationsPath ) )
+
+    # QApplication.libraryPaths() returns a list of strings
+    library_paths = QApplication.libraryPaths()
+    for one_path in library_paths :
+        fink( 'QApplication library path', one_path )
 
 if __name__ == '__main__' :
     # Start the application so LibraryInfo will work
     from PyQt5.QtWidgets import QApplication
     TheApp = QApplication( [] )
+    tellall()
