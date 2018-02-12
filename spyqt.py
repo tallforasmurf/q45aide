@@ -2,9 +2,11 @@
 Spy on the initial setup of a PyQt application and report
 
 USAGE: You must start a Qt application before calling tellall.
-It requires the app to exist. However, you should call tellall
-immediately (or at least soon) after creating the app.
-
+It requires the app to exist. Pass a reference to the application
+if you want to see the Qt Library paths. Typical:
+    from PyQt5.QtWidgets import QApplication
+    The_App = QApplication( sys.argv )
+    import spyqt; spyqt.tellall( The_App )
 '''
 __all__ = ['tellall']
 
