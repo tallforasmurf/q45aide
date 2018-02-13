@@ -41,8 +41,9 @@ def tellall( The_QApplication = None ) :
     fink( 'Qt Data (resources) path', QLibraryInfo.location( QLibraryInfo.DataPath ) )
     fink( 'Qt Translations', QLibraryInfo.location( QLibraryInfo.TranslationsPath ) )
 
-    # QApplication.libraryPaths() returns a list of strings
     if The_QApplication :
+        fink( 'QApplication dir path', The_QApplication.applicationDirPath() )
+        # QApplication.libraryPaths() returns a list of strings
         library_paths = The_QApplication.libraryPaths()
         for one_path in library_paths :
             fink( 'QApplication library path', one_path )
