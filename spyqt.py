@@ -39,6 +39,7 @@ def tellall( The_QApplication = None ) :
     fink( 'Qt Plugins Path', QLibraryInfo.location( QLibraryInfo.PluginsPath ) )
     fink( 'QML 2 Imports Path', QLibraryInfo.location( QLibraryInfo.Qml2ImportsPath ) )
     fink( 'Qt Data (resources) path', QLibraryInfo.location( QLibraryInfo.DataPath ) )
+    fink( 'Qt arch-dep. data', QLibraryInfo.location( QLibraryInfo.ArchDataPath ) )
     fink( 'Qt Translations', QLibraryInfo.location( QLibraryInfo.TranslationsPath ) )
 
     if The_QApplication :
