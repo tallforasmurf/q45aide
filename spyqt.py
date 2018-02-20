@@ -46,8 +46,8 @@ def tellall( The_QApplication = None ) :
         fink( 'QApplication dir path', The_QApplication.applicationDirPath() )
         # QApplication.libraryPaths() returns a list of strings
         library_paths = The_QApplication.libraryPaths()
-        for one_path in library_paths :
-            fink( 'QApplication library path', one_path )
+        for (index, one_path) in enumerate(library_paths) :
+            fink( 'QApplication library path {}'.format(index), one_path )
 
 if __name__ == '__main__' :
     # Start the application so LibraryInfo will work
